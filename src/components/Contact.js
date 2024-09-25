@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { motion } from 'framer-motion';
-import './Contact.css'; // Create a corresponding CSS file for styling
+import './Contact.css';
 
 const Contact = () => {
+  const [state, handleSubmit] = useForm("mjkbqdql"); // Replace "mjkbqdql" with your Form ID
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmission = (e) => {
+    handleSubmit(e);
+    setSubmitted(true); // Set submitted to true when the form is submitted
+  };
+
   return (
     <motion.section
       id="contact"
@@ -13,16 +22,48 @@ const Contact = () => {
       className="contact"
     >
       <h2>Get in Touch</h2>
-      <form className="contact-form">
-        <motion.input whileFocus={{ scale: 1.05 }} type="text" placeholder="Name" required />
-        <motion.input whileFocus={{ scale: 1.05 }} type="email" placeholder="Email" required />
-        <motion.textarea whileFocus={{ scale: 1.05 }} placeholder="Message" required />
+      {submitted && (
+        <div className="submission-message">
+          <span>✅</span> {/* Replace with any icon you want */}
+          <p>Submitted Successfully, we will get back to you in 3 business days</p>
+        </div>
+      )}
+      <form onSubmit={handleSubmission} className="contact-form">
+        <label htmlFor="name">Name</label>
+        <motion.input
+          id="name"
+          type="text"
+          name="name"
+          required
+          whileFocus={{ scale: 1.05 }}
+        />
+        
+        <label htmlFor="email">Email Address</label>
+        <motion.input
+          id="email"
+          type="email"
+          name="email"
+          required
+          whileFocus={{ scale: 1.05 }}
+        />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
+
+        <label htmlFor="message">Message</label>
+        <motion.textarea
+          id="message"
+          name="message"
+          required
+          whileFocus={{ scale: 1.05 }}
+        />
+        <ValidationError prefix="Message" field="message" errors={state.errors} />
+
         <motion.button
+          type="submit"
+          disabled={state.submitting}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          type="submit"
         >
-          Send Message
+          Submit
         </motion.button>
       </form>
     </motion.section>
