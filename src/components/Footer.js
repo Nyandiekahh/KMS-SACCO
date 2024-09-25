@@ -40,6 +40,9 @@ const Footer = () => {
       </div>
       <div className="footer-bottom">
         <p>&copy; 2024 KMS Sacco. All rights reserved.</p>
+        <p>
+          Powered by <a href="https://nyandiekahh.github.io/" target="_blank" rel="noopener noreferrer">Nyandieka</a>
+        </p>
       </div>
     </footer>
   );
