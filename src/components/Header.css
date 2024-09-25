@@ -1,0 +1,92 @@
+/* Header.css */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .logo:hover {
+    color: #00ffc3; /* Neon hover effect */
+  }
+  
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+  }
+  
+  nav ul li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  nav ul li:hover {
+    color: #00ffc3; /* Neon hover effect */
+  }
+  
+  /* Underline hover effect */
+  nav ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: #00ffc3;
+    transition: width 0.3s ease;
+  }
+  
+  nav ul li:hover::after {
+    width: 100%;
+  }
+  
+  nav ul li:active {
+    color: #00ff00; /* Slightly brighter neon on active */
+  }
+  
+  @media (max-width: 768px) {
+    .header {
+      padding: 15px 30px;
+    }
+  
+    nav ul {
+      gap: 20px;
+    }
+  
+    .logo {
+      font-size: 22px;
+    }
+  
+    nav ul li {
+      font-size: 16px;
+    }
+  }
+  
