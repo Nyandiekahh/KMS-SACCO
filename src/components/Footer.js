@@ -22,10 +22,18 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Connect With Us</h3>
           <div className="social-icons">
-            <a href="#"><FontAwesomeIcon icon={faFacebookF} /></a>
-            <a href="#"><FontAwesomeIcon icon={faTwitter} /></a>
-            <a href="#"><FontAwesomeIcon icon={faLinkedinIn} /></a>
-            <a href="#"><FontAwesomeIcon icon={faInstagram} /></a>
+            <button onClick={() => window.open('https://facebook.com', '_blank')}>
+              <FontAwesomeIcon icon={faFacebookF} />
+            </button>
+            <button onClick={() => window.open('https://twitter.com', '_blank')}>
+              <FontAwesomeIcon icon={faTwitter} />
+            </button>
+            <button onClick={() => window.open('https://linkedin.com', '_blank')}>
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </button>
+            <button onClick={() => window.open('https://instagram.com', '_blank')}>
+              <FontAwesomeIcon icon={faInstagram} />
+            </button>
           </div>
         </div>
       </div>

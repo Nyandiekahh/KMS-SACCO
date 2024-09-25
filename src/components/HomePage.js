@@ -1,11 +1,13 @@
+// src/components/HomePage.js
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faPiggyBank, faHandshake, faComments, faLightbulb, faUserShield } from '@fortawesome/free-solid-svg-icons';
 import './HomePage.css';
 import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
+import Testimonials from './Testimonials'; // Import the Testimonials component
 
 const Homepage = () => {
   const [activeSection, setActiveSection] = useState('hero');
@@ -158,32 +160,8 @@ const Homepage = () => {
           </div>
         </motion.section>
 
-        <motion.section
-          id="testimonials"
-          initial="hidden"
-          animate={activeSection === 'testimonials' ? 'visible' : 'hidden'}
-          variants={sectionVariants}
-          className="testimonials"
-        >
-          <h2>What Our Members Say</h2>
-          <div className="testimonial-carousel">
-            <AnimatePresence>
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.name}
-                  className="testimonial-item"
-                  initial={{ opacity: 0, x: 100 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -100 }}
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <p>"{testimonial.text}"</p>
-                  <h4>- {testimonial.name}</h4>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </div>
-        </motion.section>
+        {/* Use the Testimonials component here */}
+        <Testimonials testimonials={testimonials} />
 
         <motion.section
           id="contact"
@@ -192,7 +170,7 @@ const Homepage = () => {
           variants={sectionVariants}
           className="contact"
         >
-            <Contact />
+          <Contact />
         </motion.section>
 
       </main>
