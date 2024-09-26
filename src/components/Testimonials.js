@@ -1,6 +1,6 @@
 // src/components/Testimonials.js
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Testimonials = ({ testimonials }) => {
   return (
@@ -15,22 +15,19 @@ const Testimonials = ({ testimonials }) => {
       className="testimonials"
     >
       <h2>What Our Members Say</h2>
-      <div className="testimonial-carousel">
-        <AnimatePresence>
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              className="testimonial-item"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ delay: index * 0.2 }}
-            >
-              <p>"{testimonial.text}"</p>
-              <h4>- {testimonial.name}</h4>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      <div className="testimonials-grid">
+        {testimonials.map((testimonial, index) => (
+          <motion.div
+            key={index}
+            className="testimonial-item"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 }}
+          >
+            <p>"{testimonial.text}"</p>
+            <p>- {testimonial.name}</p>
+          </motion.div>
+        ))}
       </div>
     </motion.section>
   );
